@@ -3,6 +3,6 @@ stages:
     cmd: python3 detection/yolov5/train.py --img 640 --batch 16 --epochs 25
       --data plants_iab.yaml --weights yolov5s.pt
     deps:
-    - detection/datasets/yolo_datasets
+    - ../datasets/yolo_datasets
    
     
