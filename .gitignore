@@ -36,6 +36,8 @@ data/images/*
 !data/*.sh
 !data/*.dvc
 !data/*.gitignore
+!runs/train/*.dvc
+!runs/eval/*.dvc
 
 results*.csv
 
