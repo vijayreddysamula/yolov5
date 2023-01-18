@@ -1,5 +1,0 @@
-outs:
-- md5: 9bd8a9f9489125eb40fee29583cc56fa.dir
-  size: 34114568
-  nfiles: 19
-  path: /home/brainy/TerryNet/detection/yolov5/runs/train/exp
