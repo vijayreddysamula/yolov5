@@ -1,7 +1,7 @@
 stages:
   train:
     cmd: python3 train.py --img 640 --batch 16 --epochs 3
-      --data plants_iab.yaml --weights yolov5s.pt --project /home/brainy/TerryNet/detection/yolov5/runs/train
+      --data plants_iab.yaml --weights yolov5s.pt 
     deps:
     - ../datasets/yolo_datasets
    
