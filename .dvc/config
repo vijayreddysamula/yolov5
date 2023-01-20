@@ -1,0 +1,4 @@
+[core]
+    remote = yolov5_local_storage
+['remote "yolov5_local_storage"']
+    url = /home/brainy/dvc_remote_folders/
