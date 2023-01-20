@@ -1,0 +1,33 @@
+name: CML
+on: [push]
+jobs:
+ train:
+    runs-on: [self-hosted, cml, gpu]
+    steps:
+    
+    - uses: actions/checkout@v3
+    - name: Train model
+      env: 
+        CI_COMMIT_MESSAGE: Updated the experiment results
+        CI_COMMIT_AUTHOR: vijayreddysamula
+        CI_COMMIT_MAIL: vijay.samula@e-terry.de
+      run: |
+        pip install dvc
+        dvc pull
+        pip install -r requirements.txt
+        rm -rf /runs/train/exp*
+        dvc repro
+        dvc add runs/train/exp/weights --external --file model_weights.dvc
+        dvc push
+        # mv dvc.lock /home/brainy/TerryNet/detection/yolov5
+        # mv model_weights.dvc  /home/brainy/TerryNet/detection/yolov5
+        
+      
+    - name: Create CML report
+      env:
+        REPO_TOKEN: ${{ secrets.CHECKOUT_TOKEN}}
+      run: | 
+        echo "## Metrics: workflow vs. experiment1">> report.md
+        pwd
+        cat runs/train/exp/results.csv >> report.md
+        cml comment create report.md
