@@ -18,17 +18,16 @@ jobs:
         pip install -r requirements.txt
         rm -rf /runs/train/exp*
         dvc repro
-        dvc add runs/train/exp/weights --external --file model_weights.dvc
+        dvc add runs/train/exp --external --file exp.dvc
         dvc push
-        # mv dvc.lock /home/brainy/TerryNet/detection/yolov5
-        # mv model_weights.dvc  /home/brainy/TerryNet/detection/yolov5
+        
         
       
     - name: Create CML report
       env:
         REPO_TOKEN: ${{ secrets.CHECKOUT_TOKEN}}
       run: | 
-        echo "## Metrics: workflow vs. experiment1">> report.md
-        pwd
+        echo "## Metrics: Precision, Recall, mAP_0.5">> report.md
         cat runs/train/exp/results.csv >> report.md
+        
         cml comment create report.md
