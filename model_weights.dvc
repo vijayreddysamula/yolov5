@@ -1,6 +1,0 @@
-outs:
-- md5: 3634392b2f6cadbda5e07d070fd3e596.dir
-  size: 28672378
-  nfiles: 2
-  path: weights
-wdir: runs/train/exp
