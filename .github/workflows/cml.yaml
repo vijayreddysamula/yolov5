@@ -12,6 +12,7 @@ jobs:
         CI_COMMIT_AUTHOR: vijayreddysamula
         CI_COMMIT_MAIL: vijay.samula@e-terry.de
       run: |
+        git checkout experiment_iab
         pip install dvc
         dvc pull
         pip install -r requirements.txt
