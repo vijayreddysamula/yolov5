@@ -14,7 +14,7 @@ jobs:
       run: |
         git checkout experiment_iab
         pip install dvc
-        dvc pull
+        dvc pull --run-cache
         pip install -r requirements.txt
         rm -rf /runs/train/exp*
         dvc repro
